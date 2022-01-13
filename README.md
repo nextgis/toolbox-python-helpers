@@ -1,4 +1,3 @@
-# toolbox-api-helpers
 A set of sample scripts demonstrating the automation of NextGIS Toolbox with Python.
 
 # About Toolbox
