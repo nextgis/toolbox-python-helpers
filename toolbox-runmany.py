@@ -6,15 +6,16 @@ import glob,sys,time
 import urllib3
 urllib3.disable_warnings()
 
-##############################################
+##############SET THESE#######################
 token = 'YOUR API TOKEN'
 input_folder = 'c:\\Work\\test\\'
+kmlformat = 'kml'
 operation = 'kml2geodata'
 ##############################################
 
 headers = {'Authorization': 'Token %s' % token}
 
-input_files = glob.glob(input_folder + '*.kmz')
+input_files = glob.glob(input_folder + '*.' + kmlformat)
 
 for f in input_files:
     # Upload files
@@ -52,7 +53,7 @@ for f in input_files:
     # Download results
     if task_state == "SUCCESS":
         response = requests.get(response.json()['output'][0]["value"], verify=False)
-        f_output = f.replace('.kmz','_output.zip')
+        f_output = f.replace('.' + kmlformat,'_output.zip')
         with open(f_output, 'wb') as f:
             for chunk in response.iter_content(chunk_size=512 * 1024):
                 if chunk:
