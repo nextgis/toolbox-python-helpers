@@ -7,19 +7,19 @@ import urllib3
 urllib3.disable_warnings()
 
 ##############SET THESE#######################
-token = 'YOUR API TOKEN'
+token = '425e6a88-8e83-49ec-b178-4d9ca6d518ff'
 input_folder = 'c:\\Work\\test\\'
-kmlformat = 'kml'
+kmlformat = 'kmz'
 operation = 'kml2geodata'
 ##############################################
 
 headers = {'Authorization': 'Token %s' % token}
-
+base_url = 'https://toolbox.nextgis.com' #http://192.168.6.4:8031
 input_files = glob.glob(input_folder + '*.' + kmlformat)
 
 for f in input_files:
     # Upload files
-    url = 'https://toolbox.nextgis.com/api/upload/'
+    url = base_url + '/api/upload/'
     files = {}
     file = open(f, 'rb')
     response = requests.post(url, data=file, headers=headers, verify=False)
@@ -32,7 +32,7 @@ for f in input_files:
     json_request['inputs']['kmlfile'] = files['kmlfile']
 
     # Run tool
-    url = 'https://toolbox.nextgis.com/api/json/execute/'
+    url = base_url + '/api/json/execute/'
     response = requests.post(url, json=json_request, headers=headers, verify=False)
     task_id = response.json()['task_id']
     
@@ -40,7 +40,7 @@ for f in input_files:
 
     # Wait for completion
     task_state = "UNKNOWN"
-    url = 'https://toolbox.nextgis.com/api/json/status/{task_id}/'.format(task_id=task_id)
+    url = base_url + '/api/json/status/{task_id}/'.format(task_id=task_id)
     while task_state in ["UNKNOWN", "ACCEPTED", "STARTED"]:
         time.sleep(1)
         sys.stdout.write('.')
