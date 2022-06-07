@@ -9,7 +9,7 @@ urllib3.disable_warnings()
 ##############SET THESE#######################
 token = 'YOUR-API-TOKEN-HERE'
 input_folder = 'c:\\Work\\test\\'
-kmlformat = 'kmz'
+kmlformat = 'kml'
 operation = 'kml2geodata'
 ##############################################
 
@@ -29,7 +29,7 @@ for f in input_files:
     json_request = {'operation': operation, 'inputs': {}}
     json_request['inputs']['ngdriveid'] = ''
     json_request['inputs']['fields'] = 'test'
-    json_request['inputs']['is_checking_files_presence'] = 'FALSE'
+    json_request['inputs']['is_checking_files_presence'] = False #or True
     json_request['inputs']['kmlfile'] = files['kmlfile']
 
     # Run tool
