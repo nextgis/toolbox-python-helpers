@@ -7,7 +7,7 @@ import urllib3
 urllib3.disable_warnings()
 
 ##############SET THESE#######################
-token = 'YOUR-API-TOKEN-HERE'
+token = 'YOUR-API-TOKEN-HERE' '425e6a88-8e83-49ec-b178-4d9ca6d518ff'
 input_folder = 'c:\\Work\\test\\'
 kmlformat = 'kml'
 operation = 'kml2geodata'
@@ -30,6 +30,7 @@ for f in input_files:
     json_request['inputs']['ngdriveid'] = ''
     json_request['inputs']['fields'] = 'test'
     json_request['inputs']['is_checking_files_presence'] = False #or True
+    json_request['inputs']['is_ignoring_extended_data'] = False #or True
     json_request['inputs']['kmlfile'] = files['kmlfile']
 
     # Run tool
