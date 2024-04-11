@@ -1,16 +1,37 @@
-#Simplest Toolbox API run
-#working version for https://toolbox.nextgis.com/operation/hello
+# Simplest Toolbox API run for https://toolbox.nextgis.com/operation/hello
 
-import requests
+import requests,time,sys
 
 ##############SET THESE#######################
 token = 'YOUR API TOKEN'
 operation = 'hello'
+name = 'John' #5 symbols max here
 ##############################################
 
 headers = {'Authorization': 'Token %s' % token}
 json_request = {'operation': operation, 'inputs': {}}
-json_request['inputs']['name'] = 'sdfsd' #5 symbols max here
+json_request['inputs']['name'] = name
+json_request['inputs']['sleep'] = '' #empty string if no sleeping
 url = 'https://toolbox.nextgis.com/api/json/execute/'
-response = requests.post(url, json=json_request, headers=headers, verify=False)
-print(response.text)
+
+# Run tool
+response = requests.post(url, json=json_request, headers=headers)
+print(response.text) #returns task_id if all is good
+
+# Wait for the result
+task_id = response.json()['task_id']
+task_state = "UNKNOWN"
+url = 'https://toolbox.nextgis.com/api/json/status/{task_id}/'.format(task_id=task_id)
+while task_state in ["UNKNOWN", "ACCEPTED", "STARTED"]:
+    time.sleep(1)
+    sys.stdout.write('.')
+    sys.stdout.flush()
+
+    # Check state
+    response = requests.get(url, headers=headers)
+    task_state = response.json().get("state")
+
+# Download results
+if task_state == "SUCCESS":
+    output = response.json()['output'][0]["value"]
+    print('\n' + output)
