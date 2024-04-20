@@ -7,7 +7,7 @@ import urllib3
 urllib3.disable_warnings()
 
 ##############SET THESE#######################
-token = 'YOUR-API-TOKEN-HERE' '425e6a88-8e83-49ec-b178-4d9ca6d518ff'
+token = 'YOUR-API-TOKEN-HERE'
 input_folder = 'c:\\Work\\test\\'
 kmlformat = 'kml'
 operation = 'kml2geodata'

@@ -3,7 +3,7 @@
 import requests,time,sys
 
 ##############SET THESE#######################
-token = 'YOUR API TOKEN'
+token = 'YOUR-API-TOKEN-HERE'
 operation = 'hello'
 name = 'John' #5 symbols max here
 ##############################################
