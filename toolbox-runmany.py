@@ -14,7 +14,7 @@ operation = 'kml2geodata'
 ##############################################
 
 headers = {'Authorization': 'Token %s' % token}
-base_url = 'https://toolbox.nextgis.com' #http://192.168.6.4:8031
+base_url = 'https://toolbox.nextgis.com'
 input_files = glob.glob(input_folder + '*.' + kmlformat)
 
 for f in input_files:
