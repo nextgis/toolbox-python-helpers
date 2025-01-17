@@ -1,5 +1,5 @@
-#Simple Toolbox API run with sending a file over
-#working version for https://toolbox.nextgis.com/operation/kmldae2footprints
+# Simple tool run with sending a file over using Toolbox API
+# https://toolbox.nextgis.com/t/kmldae2footprints
 
 import requests
 
