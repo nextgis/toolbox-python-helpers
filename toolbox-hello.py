@@ -1,4 +1,4 @@
-# Simplest Toolbox API run for https://toolbox.nextgis.com/operation/hello
+# Simplest Toolbox API run for https://toolbox.nextgis.com/t/hello
 
 import requests,time,sys
 
