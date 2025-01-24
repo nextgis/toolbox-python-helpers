@@ -1,6 +1,6 @@
 # Simplest tool run using Toolbox SDK
 # Tool: https://toolbox.nextgis.com/t/hello
-# More SDK examples: https://gitlab.com/nextgis/toolbox/toolbox_sdk/-/blob/master/README.md?ref_type=heads
+# More SDK examples: https://pypi.org/project/toolbox-sdk/
 
 from toolbox_sdk import ToolboxClient
 
@@ -10,7 +10,7 @@ tool_name = 'hello'
 name = 'John' #5 symbols max here
 ##############################################
 
-toolbox = ToolboxClient(token=token)
+toolbox = ToolboxClient(token)
 tool = toolbox.tool(tool_name)
 
 # Run and wait for the result

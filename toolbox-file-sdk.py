@@ -1,16 +1,16 @@
 # Simple run with sending a file over using Toolbox SDK
 # Tool: https://toolbox.nextgis.com/t/kmldae2footprints
-# More SDK examples: https://gitlab.com/nextgis/toolbox/toolbox_sdk/-/blob/master/README.md?ref_type=heads
+# More SDK examples: https://pypi.org/project/toolbox-sdk/
 
 from toolbox_sdk import ToolboxClient
 
 ##############SET THESE#######################
-token = "YOUR API TOKEN"
+token = "YOUR API TOKEN'"
 tool_name = "kmldae2footprints"
 input_data = "sampledata.zip"
 ##############################################
 
-toolbox = ToolboxClient(token=token)
+toolbox = ToolboxClient(token)
 tool = toolbox.tool(tool_name)
 
 # Run and wait for the result
