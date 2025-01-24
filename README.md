@@ -9,4 +9,4 @@ Read more:
 * [Toolbox home](https://toolbox.nextgis.com)
 * [Release announcement](https://nextgis.com/blog/toolbox/)
 * [Toolbox is part of Premium subscription](https://nextgis.com/pricing-base)
-* [Toolbox SDK for tool development](https://gitlab.com/nextgis/toolbox/toolbox_sdk/-/blob/master/README.md?ref_type=heads)
+* [Use Toolbox SDK to run tools from your scripts](https://pypi.org/project/toolbox-sdk)
