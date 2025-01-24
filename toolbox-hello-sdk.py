@@ -5,9 +5,9 @@
 from toolbox_sdk import ToolboxClient
 
 ##############SET THESE#######################
-token = 'YOUR API TOKEN'
-tool_name = 'hello'
-name = 'John' #5 symbols max here
+token = "YOUR API TOKEN"
+tool_name = "hello"
+name = "John" #5 symbols max here
 ##############################################
 
 toolbox = ToolboxClient(token)
@@ -18,4 +18,4 @@ result = tool({
     "name": name
 })
 
-print(result.outputs[0]['value'])
+print(result.value)

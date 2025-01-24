@@ -5,7 +5,7 @@
 from toolbox_sdk import ToolboxClient
 
 ##############SET THESE#######################
-token = "YOUR API TOKEN'"
+token = "YOUR API TOKEN"
 tool_name = "kmldae2footprints"
 input_data = "sampledata.zip"
 ##############################################
