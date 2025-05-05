@@ -1,30 +1,32 @@
-# Simplest Toolbox API run for https://toolbox.nextgis.com/t/hello
+# Simplest Toolbox API run without using SDK for https://toolbox.nextgis.com/t/hello
 
-import requests,time,sys
+import requests
+import time
+import sys
 
 ##############SET THESE#######################
-token = 'YOUR-API-TOKEN-HERE'
-operation = 'hello'
-name = 'John' #5 symbols max here
+token = "YOUR-API-TOKEN-HERE"
+operation = "hello"
+name = "John"  # 5 symbols max here
 ##############################################
 
-headers = {'Authorization': 'Token %s' % token}
-json_request = {'operation': operation, 'inputs': {}}
-json_request['inputs']['name'] = name
-json_request['inputs']['sleep'] = '' #empty string if no sleeping
-url = 'https://toolbox.nextgis.com/api/json/execute/'
+headers = {"Authorization": "Token %s" % token}
+json_request = {"operation": operation, "inputs": {}}
+json_request["inputs"]["name"] = name
+json_request["inputs"]["sleep"] = ""  # empty string if no sleeping
+url = "https://toolbox.nextgis.com/api/json/execute/"
 
 # Run tool
 response = requests.post(url, json=json_request, headers=headers)
-print(response.text) #returns task_id if all is good
+print(response.text)  # returns task_id if all is good
 
 # Wait for the result
-task_id = response.json()['task_id']
+task_id = response.json()["task_id"]
 task_state = "UNKNOWN"
-url = 'https://toolbox.nextgis.com/api/json/status/{task_id}/'.format(task_id=task_id)
+url = "https://toolbox.nextgis.com/api/json/status/{task_id}/".format(task_id=task_id)
 while task_state in ["UNKNOWN", "ACCEPTED", "STARTED"]:
     time.sleep(1)
-    sys.stdout.write('.')
+    sys.stdout.write(".")
     sys.stdout.flush()
 
     # Check state
@@ -33,5 +35,5 @@ while task_state in ["UNKNOWN", "ACCEPTED", "STARTED"]:
 
 # Download results
 if task_state == "SUCCESS":
-    output = response.json()['output'][0]["value"]
-    print('\n' + output)
+    output = response.json()["output"][0]["value"]
+    print("\n" + output)
